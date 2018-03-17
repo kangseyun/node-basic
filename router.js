@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const { authBasic } = require('./app/controller/auth')
+const { authBasic, register } = require('./app/controller/auth')
 
-router.get('/basicAuth', authBasic);
+router.post('/basicAuth', authBasic);
+router.post('/register', register);
 
 module.exports = router

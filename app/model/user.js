@@ -1,13 +1,10 @@
 // const Bookshelf = require('./')
+var config = require('../../knexfile');
+var knex = require('knex')(config);
+var bookshelf = require('bookshelf')(knex);
 
-
-const User = Bookshelf.Model.extend({
-  tableName: 'user',
-    hasTimestamps: true,
-  }, 
-  {
-  jsonColumns: ['meta']
-})
+var User = bookshelf.Model.extend({
+  tableName: 'user'
+});
   
-  
-module.exports = Bookshelf.model('User', User)
+module.exports = User;
