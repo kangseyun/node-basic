@@ -1,15 +1,16 @@
 
 exports.up = function(knex) {
     return knex.schema
-        .createTable('contacts', function(table) {
-        table.increments('id').primary();
-        table.string('firstName');
-        table.string('lastName');
-        table.string('emailAddress');
+        .createTable('user', function(table) {
+        table.increments('id').primary().notNullable();
+        table.string('name', 10).notNullable();
+        table.string('email', 30).notNullable();
+        table.string('password', 20).notNullable();
+        table.string('token');
     });
 };
 
 exports.down = function(knex) {
     return knex.schema
-        .dropTable('contacts');
+        .dropTable('user');
 };
